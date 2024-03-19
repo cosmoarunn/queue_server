@@ -1,0 +1,49 @@
+---
+title: Cluster Queue Server
+version: 1.0.1
+date: 2024-04-10
+
+app:
+    process_count: 2 #set this depending on the number of processors in the remote machine
+    main_proc_type: process #or thread for non
+    subthreadpools : True #use subthreads for iterations or runner's additional works
+    maxsubthreadpoolQueue: 5
+    output_text_file: False #an optional text file output for results
+    wait_after_finding: False #wait for user input after a remote is found and added
+    network: "aws"
+    language: "english"
+
+server: 
+    host: 'localhost'
+    port: '8624'
+    authkey: '769ac424-adb6-5a73-83b0-d22eb27e543b'
+    debug: False
+    #ssl_context :  #for running https server
+    #    - 'cert.crt'
+    #    - 'key.key'
+  
+database: #to avoid multiple process combating to obtain db lock, diff databases used in loops
+    
+    dir: "databases" 
+    #bunch of sqlite dbs
+    db_name: "testdb" 
+    actdb_name: "actdb"
+    #tables
+    users_tbl: "users_"
+    acc_tbl: "acc_"
+    #columns as defined in cluster table
+    columns: ["acc_number", "acc_ref_id", "created", "updated"]
+
+externals:
+    name:   AWS Cluster
+    descrip:   Amazon EC2 Cloud - US East
+    link:     https://us-east-1.console.aws.amazon.com/
+
+requisites:
+    min_python_version: 3.12.2
+
+About:  >
+    Cluster Queue Servers
+
+
+...
