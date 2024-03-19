@@ -24,7 +24,6 @@ class SupplyRunner(ProcRunner):
     #hard coded properties for convenience. No change in values
     start_time = time.perf_counter()
     dir_name = os.path.dirname(__file__) + '/'
-    words_file = dir_name + '/' + "bip39-word-list.txt"
     database_dir = str(Path(__file__).parents[1]) + '/' + 'databases' + "/"
 
     #service props
